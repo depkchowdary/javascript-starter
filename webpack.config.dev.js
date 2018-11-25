@@ -7,7 +7,6 @@ export default {
   target: 'web',
   output: {
     path: path.resolve(__dirname, 'src'),
-    publicPath: '/',
     filename: 'bundle.js'
   },
   mode: 'development',
