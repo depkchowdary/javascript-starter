@@ -1,6 +1,18 @@
-var express = require('express')
-var app = express();
-var path = require('path')
+import  express from 'express'
+import path from 'path';
+import webpack from 'webpack'
+import config from '../webpack.config'
+
+const compiler = webpack(config)
+const app = express();
+app.use(require('webpack-dev-middleware')(compiler, {
+	noInfo: true,
+	publicPath: config.output.path
+}))
+
+/*Until here the files is being served under statically to clientt. As you can see numeral isnt available for browser to import*/
+
+/*we can budle that with webpack middleware instead os static middleware*/
 
 app.get("/", function(req, res){
 		res.sendFile(path.join(__dirname, "../src/index.html"))
@@ -8,7 +20,7 @@ app.get("/", function(req, res){
 
 
 
-app.listen(8080, function(err){
+app.listen(process.env.$PORT, function(err){
 	if(err){
 		console.log(err)
 	}
