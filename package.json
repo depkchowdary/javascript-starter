@@ -4,7 +4,7 @@
   "description": "JavaScript development environment Pluralsight course by Cory House",
   "scripts": {
     "prestart": "babel-node sourceScripts/startMessage.js",
-    "start": "npm-run-all  webpack-dev source-start" ,
+    "start": "npm-run-all source-start",
     "source-start": "babel-node  sourceScripts/server.js",
     "security-check": "npm audit",
     "share": "npm-run-all --parallel start source-share",
@@ -41,7 +41,8 @@
     "numeral": "2.0.6",
     "rimraf": "2.6.2",
     "style-loader": "0.23.1",
-    "webpack": "^3.8.1",
-    "webpack-dev-server": "^2.9.7"
+    "webpack": "^4.26.0",
+    "webpack-dev-middleware": "^3.4.0",
+    "webpack-dev-server": "^3.1.10"
   }
 }

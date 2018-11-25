@@ -1,7 +1,7 @@
 import  express from 'express'
 import path from 'path';
 import webpack from 'webpack'
-import config from '../webpack.config'
+import config from '../webpack.config.dev'
 
 const compiler = webpack(config)
 const app = express();
@@ -20,7 +20,7 @@ app.get("/", function(req, res){
 
 
 
-app.listen(process.env.$PORT, function(err){
+app.listen(process.env.PORT, process.env.IP, function(err){
 	if(err){
 		console.log(err)
 	}
