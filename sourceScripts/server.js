@@ -10,6 +10,7 @@ app.use(require('webpack-dev-middleware')(compiler, {
 	publicPath: config.output.path
 }))
 
+
 app.use(express.static(path.join(__dirname,"../src")))
 /*Until here the files is being served under statically to clientt. As you can see numeral isnt available for browser to import*/
 
@@ -27,3 +28,5 @@ app.listen(process.env.PORT,process.env.IP, function(err){
 	}
 	console.log("server is running on port:", process.env.PORT)
 })
+
+/*test*/
