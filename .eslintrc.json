@@ -16,6 +16,6 @@
   },
   "rules": {
     //Decide rules to watch for in the application
-    "no-console" : 1
+    "no-console" : 0
   }
 }
