@@ -4,7 +4,7 @@
   "description": "JavaScript development environment Pluralsight course by Cory House",
   "scripts": {
     "prestart": "babel-node sourceScripts/startMessage.js",
-    "start": "npm-run-all --parallel security-check lint:watch source:start test:watch",
+    "start": "npm-run-all --parallel security-check lint:watch source:start test:watch start-mockapi",
     "source:start": "babel-node  sourceScripts/server.js",
     "security-check": "npm audit",
     "share": "npm-run-all --parallel start source:share",
@@ -12,9 +12,13 @@
     "lint": "esw webpack.config.* sourceScripts src",
     "lint:watch": "npm run lint -- --watch",
     "test": "mocha --reporter progress sourceScripts/testSetup.js \"src/**/*.test.js\"",
-    "test:watch" : "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch",
+    "generate-mock-data": "babel-node sourceScripts/generateMockData.js",
+    "prestart-mockapi": "npm run generate-mock-data",
+    "start-mockapi": "json-server --port $PORT --hostname $IP --watch src/api/db.json",
+    "build": "webpack"
   },
-  "author": "Cory House",
+  "author": "Deepak Tatineni",
   "license": "MIT",
   "dependencies": {
     "whatwg-fetch": "3.0.0"
@@ -34,6 +38,7 @@
     "eslint-watch": "4.0.2",
     "express": "^4.16.4",
     "extract-text-webpack-plugin": "3.0.2",
+    "faker": "^4.1.0",
     "html-webpack-plugin": "3.2.0",
     "jquery": "^3.3.1",
     "jsdom": "13.0.0",
