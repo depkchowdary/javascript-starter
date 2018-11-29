@@ -1,16 +1,8 @@
-import  express from 'express'
-import path from 'path';
-import webpack from 'webpack'
-import config from '../webpack.config.dev'
+import express from 'express';
 
-const compiler = webpack(config)
 const app = express();
 
-app.use(require('webpack-dev-middleware')(compiler, {
-	noInfo: true,
-	publicPath: config.output.publicPath
-}))
-
+//app.use(express.static(path.join(__dirname,"../src")))
 
 app.get("/", function(req, res){
 		res.sendFile(path.join(__dirname, "../src/index.html"))
@@ -28,11 +20,9 @@ app.get("/users", function(req, res){
 })
 
 
-app.listen(8081,'127.0.0.1', function(err){
+app.listen(8081,process.env.IP, function(err){
 	if(err){
 		console.log(err)
 	}
 	console.log("server is running on port")
-})
-
-/*test*/
+}) 

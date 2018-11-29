@@ -8,15 +8,16 @@
     "source:start": "babel-node  sourceScripts/server.js",
     "security-check": "npm audit",
     "share": "npm-run-all --parallel start source:share",
-    "source:share": "lt -8080",
+    "source:share": "lt --port 8081",
     "lint": "esw webpack.config.* sourceScripts src",
     "lint:watch": "npm run lint -- --watch",
     "test": "mocha --reporter progress sourceScripts/testSetup.js \"src/**/*.test.js\"",
     "test:watch": "npm run test -- --watch",
     "generate-mock-data": "babel-node sourceScripts/generateMockData.js",
     "prestart-mockapi": "npm run generate-mock-data",
-    "start-mockapi": "json-server --port $PORT --hostname $IP --watch src/api/db.json",
-    "build": "webpack"
+    "start-mockapi": "json-server  --watch src/api/db.json",
+    "dev": "webpack-dev-server --mode development --output ./src/bundle.js --open",
+    "build": "webpack --mode  production --output ./src/bundle.js"
   },
   "author": "Deepak Tatineni",
   "license": "MIT",
@@ -51,7 +52,7 @@
     "numeral": "2.0.6",
     "rimraf": "2.6.2",
     "style-loader": "0.23.1",
-    "webpack": "^4.26.0",
+    "webpack": "^4.26.1",
     "webpack-cli": "^3.1.2",
     "webpack-dev-middleware": "^3.4.0",
     "webpack-dev-server": "^3.1.10"
